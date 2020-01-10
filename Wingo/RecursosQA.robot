@@ -54,8 +54,8 @@ Ingresar_lugares
     Click Element    ${CiuORIGEN}
     Input Text       ${SltDESTINO}   ${DESTINO}
     Click Element    ${CiuDESTINO}
-
     valida pop up rutas
+    Sleep    1s
 
 Asignar_tipo_de_ruta
     [Arguments]      ${ESRUTA}

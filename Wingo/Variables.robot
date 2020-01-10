@@ -8,7 +8,7 @@
 &{URLBOOKING}    QA=https://booking-uat.wingo.com/es/search     PROD=https://booking.wingo.com/es/search
 
 #CORREO RESERVA
-${CORREORESERVA}     cristianvergara@sqdm.com    #BeDiaz@wingo.com     #katyeslava@gmail.com      #cristianvergara@sqdm.com     #bot@sqdm.com       ginpao126@hotmail.com     santiagonzalez.sgl@gmail.com
+${CORREORESERVA}     pruebas.wingo@gmail.com    #cristianvergara@sqdm.com    #BeDiaz@wingo.com     #katyeslava@gmail.com      #cristianvergara@sqdm.com     #bot@sqdm.com       ginpao126@hotmail.com     santiagonzalez.sgl@gmail.com
 
 #DATOS PERSONA PAGOS AUTOMATIZADOS
 ${NOMBREAUT}     Pagos
