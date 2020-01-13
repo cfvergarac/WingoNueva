@@ -508,7 +508,7 @@ ver detalles
     capture page screenshot
 
 Pago_tarjeta_credito
-    ${present}=   Run Keyword And Return Status    Wait Until Page Contains Element    ${BtnSEGURO}    2s
+    ${present}=   Run Keyword And Return Status    Wait Until Page Contains Element    ${BtnSEGURO}    5s
     Run Keyword If    ('${present}' == 'True')     Execute Javascript     document.getElementById("noseguroviaje").click();
 	Wait Until Page Contains Element    ${ChkTARJETACREDITO}
 	Sleep  2s
