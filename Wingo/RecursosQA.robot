@@ -1,12 +1,12 @@
 ﻿*** Settings ***
 Resource    Common/TodasLasLibrerias.robot
 Resource    variables.robot
-Resource    PO/PaginaPrincipal.robot
-Resource    PO/2-PersonalizaVuelo.robot
-Resource    PO/3-AsignaSillas.robot
-Resource    PO/4-Pagos.robot
-Resource    PO/5-EligeVuelo.robot
-Library     MyFaker.py
+Resource    PO/IBE/PaginaPrincipal.robot
+Resource    PO/IBE/2-PersonalizaVuelo.robot
+Resource    PO/IBE/3-AsignaSillas.robot
+Resource    PO/IBE/4-Pagos.robot
+Resource    PO/IBE/5-EligeVuelo.robot
+
 
 *** Keywords ***
 
@@ -105,7 +105,8 @@ Seleccionar_Fechas
     ${DIAPARTIDA}=      Set Variable     ${FECHAIDA.day}
     ${SUMA}=         	Get From Dictionary    ${SUMAFECHA}   	${MESPARTIDA}
     ${DIAPARTIDA}=      Evaluate    ${DIAPARTIDA} + ${SUMA}
- 
+
+    Sleep    0.5s
     wait until element is visible   ${SltFECHAIDA}
     Click Element                  ${SltFECHAIDA}
     Select From List By Label      ${SlcANOPARTIDA}      ${ANOPARTIDA}
@@ -322,7 +323,9 @@ Selecciona_sillas
 
 Sillas_RT
     wait until page does not contain    ${GIFAVION}
+    Sleep   0.5s
     Click Javascript    ${BtnVUELOREGRESO}
+    #Click Element    ${BtnVUELOREGRESO}
     Sillas_OW
 
 Sillas_OW
@@ -535,59 +538,3 @@ Pago_tarjeta_credito
     Capture Page Screenshot
     ${PNR}=   Get Text    ${LblPNRTC}
     log to console    ${PNR}
-
-
-#  Keywords bot pasa directamente a tarifas
-concatena url
-    [arguments]    ${AMBIENTE}    ${UCIUDADIDA}   ${UCIUDADVUELTA}   ${UFECHAIDA}    ${UFECHAVUELTA}     ${UADULTOS}    ${UNINOS}    ${UINFANTES}    ${UMONEDA}    ${UNAVEGADOR}
-    Run Keyword If  ('${UFECHAVUELTA}' <> 'x')    asigna url RT    ${AMBIENTE}    ${UCIUDADIDA}   ${UCIUDADVUELTA}   ${UFECHAIDA}    ${UFECHAVUELTA}     ${UADULTOS}    ${UNINOS}    ${UINFANTES}    ${UMONEDA}
-    Run Keyword If  ('${UFECHAVUELTA}' == 'x')    asigna url OW    ${AMBIENTE}    ${UCIUDADIDA}   ${UCIUDADVUELTA}   ${UFECHAIDA}    ${UADULTOS}    ${UNINOS}    ${UINFANTES}    ${UMONEDA}
-    abre navegador en tarifas    ${URL}    ${UNAVEGADOR}
-    Asignar elementos Pagina principal    'ES'
-    entra a tarifas    ${UINFANTES}
-    crea pasajeros    ${UADULTOS}    ${UNINOS}    ${UINFANTES}
-
-    ${PRECIO}=    Get Text     id=headerTotalForDesktop
-    log to console    ${PRECIO}
-    ${URLT}=  set variable      ${AMBIENTE},${UCIUDADIDA},${UCIUDADVUELTA},${UFECHAIDA},${UFECHAVUELTA},${UADULTOS},${UNINOS},${UINFANTES},${UMONEDA},${PRECIO}
-    log to console    ${URLT}
-    Append To File 	 ${CURDIR}/cris.txt      ${URLT}     encoding=UTF-8
-    #${TVUELO}=   set test variable
-
-asigna url RT
-    [arguments]    ${AMBIENTE}    ${UCIUDADIDA}   ${UCIUDADVUELTA}   ${UFECHAIDA}    ${UFECHAVUELTA}     ${UADULTOS}    ${UNINOS}    ${UINFANTES}    ${UMONEDA}
-    ${URL}=    Catenate  SEPARATOR=/   ${URLBOOKING.${AMBIENTE}}   ${UCIUDADIDA}   ${UCIUDADVUELTA}   ${UFECHAIDA}   ${UFECHAVUELTA}   ${UADULTOS}   ${UINFANTES}    ${UNINOS}   0   ${UMONEDA}   0   0
-    set test variable   ${URL}
-    ${TVUELO}=  set variable  RT
-    set test variable   ${TVUELO}
-
-asigna url OW
-    [arguments]    ${AMBIENTE}    ${UCIUDADIDA}   ${UCIUDADVUELTA}   ${UFECHAIDA}     ${UADULTOS}    ${UNINOS}    ${UINFANTES}    ${UMONEDA}
-    ${URL}=    Catenate  SEPARATOR=/   ${URLBOOKING.${AMBIENTE}}   ${UCIUDADIDA}   ${UCIUDADVUELTA}   ${UFECHAIDA}   ${UADULTOS}   ${UINFANTES}    ${UNINOS}   1   ${UMONEDA}   0   0
-    set test variable   ${URL}
-    ${TVUELO}=  set variable  OW
-    set test variable   ${TVUELO}
-
-
-abre navegador en tarifas
-    [arguments]    ${URL}    ${NAVEGADOR}
-    Open Browser    ${URL}    ${NAVEGADOR}
-    set test variable    ${NAVEGADOR}
-    Maximize Browser Window
-
-entra a tarifas
-    [arguments]    ${UINFANTES}
-    Run Keyword If  ('${UINFANTES}' <> '0')    Valida_infantes
-    Wait Until Page Contains     ${TxtTarifas}
-
-crea pasajeros
-    [Arguments]      ${NUMADULTOS}    ${NUMNINOS}    ${NUMINFANTES}
-    ${NUMADULTOS}=      Evaluate    ${NUMADULTOS}-1
-    ${TIENEINFANTES}=   Evaluate    ${NUMINFANTES} > 0
-    Run Keyword If  ('${TIENEINFANTES}' == 'False')    Set Test Variable    ${HAYINFANTES}    No
-    Run Keyword If  ('${TIENEINFANTES}' == 'True')     Set Test Variable     ${HAYINFANTES}     Si
-    ${NUMADULTOS}=       Evaluate    ${NUMADULTOS}+2
-    Set Test Variable    ${NUMADULTOS}
-    Set Test Variable    ${NUMNINOS}
-    Set Test Variable    ${NUMINFANTES}
-    Set Test Variable    ${TIENEINFANTES}

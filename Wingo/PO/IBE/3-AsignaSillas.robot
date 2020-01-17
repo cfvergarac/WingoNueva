@@ -20,7 +20,7 @@ Asignar elementos pagina sillas
     ${TxtSillas}=     set variable if      ${LENGUA}=='ES'       ¿Quieres escoger tu silla? (Opcional)        Do you want to select your seat? (Optional)
     set test variable       ${TxtSillas}
 
-    ${BtnVUELOREGRESO}=     set variable if      ${LENGUA}=='ES'        xpath=//h3[contains(.,'Vuelo de regreso')]       xpath=//h3[contains(.,' Return flight')]
+    ${BtnVUELOREGRESO}=     set variable if      ${LENGUA}=='ES'        xpath=//h3[contains(.,'Vuelo de regreso')]        xpath=//h3[contains(.,' Return flight')]
     set test variable       ${BtnVUELOREGRESO}
 
     ${BtnCONTINUAROWQA}=     set variable if      ${LENGUA}=='ES'          xpath=//button[@class='btn btn-default ng-star-inserted'][contains(.,'No, gracias')]    xpath=//button[@class='btn btn-default ng-star-inserted'][contains(.,'No, thanks')]

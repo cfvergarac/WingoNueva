@@ -3,7 +3,7 @@
 #BOTONES
 
 ${BtnPAGAR}        xpath=//button[@data-popup='popup-1']
-${BtnSEGURO}       id=noseguroviaje
+${BtnSEGURO}       xpath=//input[@id='noseguroviaje']
 
 
 #${ChkTERMINOSYC}         xpath=//label[@for='acceptTerms']
@@ -110,7 +110,7 @@ Asignar elementos Pagina pagos
     [Arguments]      ${LENGUA}
     #CASH
 
-    ${ACORDEONEFECTIVO}=     set variable if      ${LENGUA}=='ES'       xpath=//p[contains(.,'Pagos en efectivo en Colombia, Ecuador, Panamá')]     xpath=//p[contains(.,'Cash payments in Colombia, Ecuador, Panama City')]
+    ${ACORDEONEFECTIVO}=     set variable if      ${LENGUA}=='ES'      xpath=//label[@for='payment_method_1']    #xpath=//p[contains(.,'Pagos en efectivo en Colombia, Ecuador, Panamá')]     xpath=//p[contains(.,'Cash payments in Colombia, Ecuador, Panama City')]
     set test variable       ${ACORDEONEFECTIVO}
     ${ChkEF}=     set variable if      ${LENGUA}=='ES'       xpath=//label[contains(.,'Colombia - Bancos')]      xpath=//label[contains(.,'Colombia - Banks')]
     set test variable       ${ChkEF}
