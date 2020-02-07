@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20200123 12:05:32.689" generator="Robot 3.1.2 (Python 2.7.16 on win32)">
+<suite source="D:\Automatizacion python\Wingo\Wingo\Test\MMB\MMB.robot" id="s1" name="MMB">
+<test id="s1-t1" name="abrirpagina">
+<kw name="abrir MMB" library="KeywordsMMB">
+<arguments>
+<arg>QAIN</arg>
+<arg>gc</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${AMBIENTE}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:32.979" level="INFO">${AMBIENTE} = QAIN</msg>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.972"></status>
+</kw>
+<kw name="Asigna PO pagina principal" library="1-Login">
+<arguments>
+<arg>${LENGUAJE.${AMBIENTE}}</arg>
+</arguments>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>D:\\Automatizacion python\\Wingo\\Wingo\\PO\\MMB/LoginPO.py</arg>
+<arg>${IDIOMA}</arg>
+</arguments>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Txt Pnr" library="LoginPO">
+<assign>
+<var>${CampoPNR}</var>
+</assign>
+<msg timestamp="20200123 12:05:32.979" level="INFO">${CampoPNR} = id=reservation</msg>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${CampoPNR}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:32.979" level="INFO">${CampoPNR} = id=reservation</msg>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Txt Apellido" library="LoginPO">
+<assign>
+<var>${CampoApellido}</var>
+</assign>
+<msg timestamp="20200123 12:05:32.979" level="INFO">${CampoApellido} = id=lastName</msg>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${CampoApellido}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:32.979" level="INFO">${CampoApellido} = id=lastName</msg>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Btn Entrar" library="LoginPO">
+<assign>
+<var>${BotonEntrar}</var>
+</assign>
+<msg timestamp="20200123 12:05:32.979" level="INFO">${BotonEntrar} = xpath=//input[@value='Search']</msg>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${BotonEntrar}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:32.979" level="INFO">${BotonEntrar} = xpath=//input[@value='Search']</msg>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Msgconfirmacion" library="LoginPO">
+<assign>
+<var>${TextoHaEntrado}</var>
+</assign>
+<msg timestamp="20200123 12:05:32.979" level="INFO">${TextoHaEntrado} = Manage your trip</msg>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${TextoHaEntrado}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:32.979" level="INFO">${TextoHaEntrado} = Manage your trip</msg>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<status status="PASS" endtime="20200123 12:05:32.979" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL.${AMBIENTE}}</arg>
+<arg>${NAVEGADOR}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:32.979" level="INFO">Opening browser 'gc' to base url 'https://mmb-qa.wingo.com/searchpnr/en'.</msg>
+<status status="PASS" endtime="20200123 12:05:40.754" starttime="20200123 12:05:32.979"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20200123 12:05:43.583" starttime="20200123 12:05:40.754"></status>
+</kw>
+<status status="PASS" endtime="20200123 12:05:43.584" starttime="20200123 12:05:32.972"></status>
+</kw>
+<kw name="Loguearse" library="KeywordsMMB">
+<arguments>
+<arg>XIPD9E</arg>
+<arg>Copeland</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${CampoPNR}</arg>
+</arguments>
+<status status="PASS" endtime="20200123 12:05:43.725" starttime="20200123 12:05:43.585"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CampoPNR}</arg>
+<arg>${PNR}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:43.726" level="INFO">Typing text 'XIPD9E' into text field 'id=reservation'.</msg>
+<status status="PASS" endtime="20200123 12:05:43.928" starttime="20200123 12:05:43.725"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${CampoApellido}</arg>
+<arg>${APELLIDO}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:43.929" level="INFO">Typing text 'Copeland' into text field 'id=lastName'.</msg>
+<status status="PASS" endtime="20200123 12:05:44.124" starttime="20200123 12:05:43.928"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${BotonEntrar}</arg>
+</arguments>
+<status status="PASS" endtime="20200123 12:05:44.146" starttime="20200123 12:05:44.124"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${BotonEntrar}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:44.147" level="INFO">Clicking button 'xpath=//input[@value='Search']'.</msg>
+<status status="PASS" endtime="20200123 12:05:44.423" starttime="20200123 12:05:44.146"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${TextoHaEntrado}</arg>
+</arguments>
+<status status="PASS" endtime="20200123 12:05:44.444" starttime="20200123 12:05:44.423"></status>
+</kw>
+<status status="PASS" endtime="20200123 12:05:44.444" starttime="20200123 12:05:43.584"></status>
+</kw>
+<kw name="ir cambio vuelo" library="KeywordsMMB">
+<kw name="Asigna PO cambio vuelo" library="3-CambioVuelo">
+<arguments>
+<arg>${LENGUAJE.${AMBIENTE}}</arg>
+</arguments>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>D:\\Automatizacion python\\Wingo\\Wingo\\PO\\MMB/CambioVueloPO.py</arg>
+<arg>${IDIOMA}</arg>
+</arguments>
+<status status="PASS" endtime="20200123 12:05:44.449" starttime="20200123 12:05:44.446"></status>
+</kw>
+<kw name="Btn Ircambio" library="CambioVueloPO">
+<assign>
+<var>${BtnIrCambio}</var>
+</assign>
+<msg timestamp="20200123 12:05:44.450" level="INFO">${BtnIrCambio} = xpath=//button[contains(.,'Change')]</msg>
+<status status="PASS" endtime="20200123 12:05:44.450" starttime="20200123 12:05:44.449"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${BtnIrCambio}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:44.451" level="INFO">${BtnIrCambio} = xpath=//button[contains(.,'Change')]</msg>
+<status status="PASS" endtime="20200123 12:05:44.451" starttime="20200123 12:05:44.450"></status>
+</kw>
+<status status="PASS" endtime="20200123 12:05:44.452" starttime="20200123 12:05:44.445"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${BtnIrCambio}</arg>
+<arg>10s</arg>
+</arguments>
+<status status="PASS" endtime="20200123 12:05:50.273" starttime="20200123 12:05:44.452"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${BtnIrCambio}</arg>
+</arguments>
+<msg timestamp="20200123 12:05:50.273" level="INFO">Clicking button 'xpath=//button[contains(.,'Change')]'.</msg>
+<status status="PASS" endtime="20200123 12:05:50.424" starttime="20200123 12:05:50.273"></status>
+</kw>
+<status status="PASS" endtime="20200123 12:05:50.424" starttime="20200123 12:05:44.445"></status>
+</kw>
+<status status="PASS" endtime="20200123 12:05:50.425" critical="yes" starttime="20200123 12:05:32.972"></status>
+</test>
+<status status="PASS" endtime="20200123 12:05:50.427" starttime="20200123 12:05:32.689"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="MMB" pass="1">MMB</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
