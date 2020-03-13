@@ -4,6 +4,6 @@ Resource          ../../Common/User Keywords/MMB/KeywordsMMB.robot
 
 *** Test Cases ***
 abrirpagina
-    abrir MMB        QAIN      gc
-    Loguearse        XIPD9E     Copeland
+    abrir MMB        QAL       gc
+    Loguearse        5K3119    Barker
     ir cambio vuelo
